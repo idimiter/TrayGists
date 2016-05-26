@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>gists_black.png</file>
+        <file>gists_white.png</file>
+    </qresource>
+</RCC>
