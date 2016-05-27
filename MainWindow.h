@@ -14,27 +14,47 @@
 
 class QDateTime;
 class QSystemTrayIcon;
+class QMenu;
+class QAction;
 class QNetworkAccessManager;
 class QTimer;
+class QNetworkReply;
+class QSettings;
+
+typedef struct {
+	QString name;
+	QString description;
+	QUrl url;
+	QUrl iconUrl;
+	QDateTime updatedAt;
+} Gist;
 
 class MainWindow : public QMainWindow
 {
 	Q_OBJECT
 
 private:
+	QSettings *userSettings;
+	QList<Gist> gists;
+
 	QTimer *updateTimer;
 	QDateTime lastUpdate;
 	QSystemTrayIcon *trayIcon;
+	QMenu *gistsMenu;
 	QNetworkAccessManager *networkManager;
 
 	void closeEvent(QCloseEvent *event);
 	QString timeAgo(QDateTime date);
+	void loadGistIcon(Gist*, QAction*);
+
 
 public slots:
 	void showAbout();
 	void refreshGists();
 	void gistsFetched(QNetworkReply*);
 	void messageClicked();
+	void gistSelected(QAction*);
+	void gistIconLoaded(QNetworkReply*);
 
 public:
 	MainWindow(QWidget *parent = 0);
