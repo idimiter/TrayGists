@@ -21,13 +21,13 @@ class QTimer;
 class QNetworkReply;
 class QSettings;
 
-typedef struct {
+struct Gist {
 	QString name;
 	QString description;
 	QUrl url;
 	QUrl iconUrl;
 	QDateTime updatedAt;
-} Gist;
+};
 
 class MainWindow : public QMainWindow
 {
@@ -40,6 +40,7 @@ private:
 	QTimer *updateTimer;
 	QDateTime lastUpdate;
 	QSystemTrayIcon *trayIcon;
+	QMenu *mainMenu;
 	QMenu *gistsMenu;
 	QNetworkAccessManager *networkManager;
 

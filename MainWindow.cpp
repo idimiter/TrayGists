@@ -52,7 +52,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 	gistsMenu = new QMenu("gists");
 	connect(gistsMenu, SIGNAL(triggered(QAction*)), this, SLOT(gistSelected(QAction*)));
 
-	QMenu *mainMenu = new QMenu;
+	mainMenu = new QMenu;
 	mainMenu->addAction(refreshAction);
 	mainMenu->addMenu(gistsMenu);
 	mainMenu->addSeparator();
@@ -72,6 +72,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 MainWindow::~MainWindow()
 {
 	gistsMenu->clear();
+	mainMenu->clear();
 
 	delete networkManager;
 	delete userSettings;
