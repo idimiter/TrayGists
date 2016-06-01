@@ -71,6 +71,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 
 MainWindow::~MainWindow()
 {
+	gistsMenu->clear();
+
+	delete networkManager;
+	delete userSettings;
+	delete gistsMenu;
+	delete updateTimer;
+	delete trayIcon;
 }
 
 
